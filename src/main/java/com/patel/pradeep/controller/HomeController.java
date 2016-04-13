@@ -1,4 +1,4 @@
-package com.patel.pradeep;
+package com.patel.pradeep.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -23,7 +23,13 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public String goHome(Locale locale, Model model) {
+		logger.info("goHome");
+		return "home";
+	}
+	
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public String index(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		Date date = new Date();
@@ -33,7 +39,6 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "home";
+		return "index";
 	}
-	
 }
