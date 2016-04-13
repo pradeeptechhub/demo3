@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.patel.pradeep.model.Project;
+
 /**
  * Handles requests for the application home page.
  */
@@ -25,6 +27,13 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String goHome(Locale locale, Model model) {
 		logger.info("goHome");
+		
+		Project project = new Project();
+		project.setName("First Project");
+		project.setSponsor("Nasa");
+		project.setDescription("This is a simple project sponsored by NASA");
+		
+		model.addAttribute("currentProject", project);
 		return "home";
 	}
 	
