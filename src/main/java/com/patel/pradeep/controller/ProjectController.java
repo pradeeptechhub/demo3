@@ -1,5 +1,7 @@
 package com.patel.pradeep.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,8 +33,14 @@ public class ProjectController {
 	}
 
 	@RequestMapping(value="/add",method=RequestMethod.GET)
-	public String addProject(){
+	public String addProject(Model model){
 		System.out.println("invoking addProject");
+		model.addAttribute("types", new ArrayList<String>(){{
+			add("");
+			add("Single Year");
+			add("Multi Year");
+		}});
+		model.addAttribute("project", new Project());
 		return "project_add";
 	}
 
