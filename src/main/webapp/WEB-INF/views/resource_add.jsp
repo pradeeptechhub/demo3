@@ -34,13 +34,7 @@
 				</div>
 				<div class="form-group">
 					<label for="resource-type">Type</label>
-					<select id="resource-type" name="type" class="selectpicker">
-						<option></option>
-						<option value="material">Material</option>
-						<option value="other">Other</option>
-						<option value="staff">Staff</option>
-						<option value="tech">Technical Equipment</option>
-					</select>
+					<form:select path="type" items="${typeOptions}" cssClass="selectpicker" />
 				</div>
 				<div class="form-group">
 					<label for="cost">Cost</label>
