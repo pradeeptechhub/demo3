@@ -9,6 +9,7 @@
 <title>Project Manager</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.css">
 <link rel="stylesheet" href="<spring:url value="/resources/css/bootstrap-select.min.css"/>" type="text/css" />
+<link rel="stylesheet" href="<spring:url value="/resources/css/global.css"/>" type="text/css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.js"></script>
 <script src="<spring:url value="/resources/js/bootstrap-select.min.js"/>"></script>
@@ -34,7 +35,10 @@
 				</div>
 				<div class="form-group">
 					<label for="resource-type">Type</label>
-					<form:select path="type" items="${typeOptions}" cssClass="selectpicker" />
+					<form:select id="resource-type" path="type" cssClass="selectpicker">
+						<form:option value="Empty" label="Select One..." />
+						<form:options items="${typeOptions}"/>
+					</form:select>
 				</div>
 				<div class="form-group">
 					<label for="cost">Cost</label>
@@ -43,7 +47,11 @@
 				</div>
 				<div class="form-group">
 					<label for="unit">Unit of Measure</label>
-					<input id="unit" type="text" class="form-control" name="unitOfMeasure" />
+					<form:radiobuttons path="unitOfMeasure" items="${radioOptions}"/>
+				</div>
+				<div class="form-group">
+					<label for="indicators">Indicators</label>
+					<form:checkboxes id="indicators" path="indicators" items="${checkOptions}"/>
 				</div>
 				<button type="submit" class="btn btn-default">Submit</button>
 			</div>
