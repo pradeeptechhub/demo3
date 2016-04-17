@@ -29,8 +29,8 @@
 			<div class="row">
 
 				<div class="form-group">
-					<label for="resource-name">Name</label> <input type="text"
-						id="resource-name" class="form-control" name="name" />
+					<label for="resource-name">Name</label>
+					<form:input path="name" cssClass="form-control" id="resource-name" />
 				</div>
 				<div class="form-group">
 					<label for="resource-type">Type</label>
@@ -43,12 +43,13 @@
 					</select>
 				</div>
 				<div class="form-group">
-					<label for="cost">Cost</label> <input id="cost" type="text"
+					<label for="cost">Cost</label>
+					<input id="cost" type="text"
 						class="form-control" name="cost" />
 				</div>
 				<div class="form-group">
-					<label for="unit">Unit of Measure</label> <input id="unit"
-						type="text" class="form-control" name="unitOfMeasure" />
+					<label for="unit">Unit of Measure</label>
+					<input id="unit" type="text" class="form-control" name="unitOfMeasure" />
 				</div>
 				<button type="submit" class="btn btn-default">Submit</button>
 			</div>
