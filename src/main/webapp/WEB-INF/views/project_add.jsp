@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -24,52 +25,55 @@
 		<jsp:include page="../views/fragments/header.jsp"></jsp:include>
 		<div class="container">
 			<div class="row">
-				<form action="<spring:url value="/project/add"/>" method="post"
-					class="col-md-8 col-md-offset-2">
+				<spring:url value="/project/add" var="formUrl"/>
+				<form:form modelAttribute="project" action="${formUrl}" method="post" cssClass="col-md-8 col-md-offset-2">
 
 					<div class="form-group">
 						<label for="project-name">Name</label>
-						<input type="text" id="project-name" class="form-control" name="name" />
+						<form:input id="project-name" class="form-control" path="name" />
 					</div>
 
 					<div class="form-group">
 						<label for="project_type">Type</label>
-						<select name="type"
-							class="selectpicker">
-							<option></option>
-							<option value="single">Single Year</option>
-							<option value="multi">Multi-Year</option>
-						</select>
+						<form:select path="type" cssClass="selectpicker" items="${types}"></form:select>
 					</div>
 
 					<div class="form-group">
-						<label for="sponsor">Sponsor</label>
-						<input id="sponsor" type="text" class="form-control" name="sponsor" />
+						<label for="sponsor-name">Sponsor Name</label>
+						<form:input id="sponsor-name" cssClass="form-control" path="sponsor.name" />
+					</div>
+					<div class="form-group">
+						<label for="sponsor-phone">Sponsor Phone</label>
+						<form:input id="sponsor-phone" cssClass="form-control" path="sponsor.phone" />
+					</div>
+					<div class="form-group">
+						<label for="sponsor-email">Sponsor Email</label>
+						<form:input id="sponsor-email" cssClass="form-control" path="sponsor.email" />
 					</div>
 
 					<div class="form-group">
 						<label for="funds">Authorized Funds</label>
-						<input id="funds" type="text" class="form-control" name="authorizedFunds" />
+						<form:input id="funds" class="form-control" path="authorizedFunds" />
 					</div>
 
 					<div class="form-group">
 						<label for="hours">Authorized Hours</label>
-						<input id="hours" type="text" class="form-control" name="authorizedHours" />
+						<form:input id="hours" class="form-control" path="authorizedHours" />
 					</div>
 
 					<div class="form-group">
 						<label for="project-name">Description</label>
-						<textarea class="form-control" name="description" rows="3"></textarea>
+						<form:textarea class="form-control" path="description" rows="3"></form:textarea>
 					</div>
 
 					<div class="form-group">
 						<label for="special">Special</label>
-						<input id="special" name="special" type="checkbox" />
+						<form:checkbox  id="special" path="special"/>
 					</div>
 
 					<button type="submit" class="btn btn-default">Submit</button>
 
-				</form>
+				</form:form>
 			</div>
 		</div>
 	</body>
