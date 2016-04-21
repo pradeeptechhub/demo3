@@ -28,7 +28,7 @@ public class ResourceController {
 	}
 
 	@RequestMapping("/request")
-	@ResponseBody
+	@ResponseBody //request(@RequestBody String resource)
 	public String request(@ModelAttribute("resource") Resource resource){
 		System.out.println("Invoking request()");
 		System.out.println(resource);
