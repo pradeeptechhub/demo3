@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.patel.pradeep.model.Resource;
 
@@ -32,9 +33,10 @@ public class ResourceController {
 	}
 
 	@RequestMapping("/save")
-	public String save(@ModelAttribute Resource resource) {
+	public String save(@ModelAttribute Resource resource, SessionStatus status) {
 		System.out.println("Invoking the save()");
 		System.out.println(resource);
+		status.setComplete(); //To remove attributes from session (@SessionAttributes("resource") here)
 		// return "resource_add"; //OR
 		return "redirect:/resource/add";
 	}
