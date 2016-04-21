@@ -1,1 +1,14 @@
 @\Spring\Spring MVC\O'Reilly - Spring MVC for Java Developers
+
+Notes:
+@ModelAttributes get placed within the model when used on a stand alone method.
+@ModelAttributes is used to map form data to model attributes when used as a method parameter.
+@SessionAttributes is applicable to single controller only.
+
+Spring MVC Questions:
+Que01. What is flashAttribute and why do we use it?
+Ans: You can use RedirectAttributes to store flash attributes and they will be automatically propagated to the "output" FlashMap of the current request.
+A RedirectAttributes model is empty when the method is called and is never used unless the method returns a redirect view name or a RedirectView.
+After the redirect, flash attributes are automatically added to the model of the controller that serves the target URL.
+
+2. flashAttribute vs modelAttribute
