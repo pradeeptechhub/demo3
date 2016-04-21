@@ -15,15 +15,11 @@
 <script src="<spring:url value="/resources/js/bootstrap-select.min.js"/>"></script>
 </head>
 <body>
-
 	<jsp:include page="../views/fragments/header.jsp"></jsp:include>
-
 	<div class="container">
-
 		<div class="row">
 			<h1>Resource</h1>
 		</div>
-
 		<spring:url value="/resource/review" var="formUrl"/>
 		<form:form action="${formUrl}" method="POST" modelAttribute="resource">
 
@@ -60,7 +56,6 @@
 			</div>
 
 		</form:form>
-
 	</div>
 </body>
 </html>
