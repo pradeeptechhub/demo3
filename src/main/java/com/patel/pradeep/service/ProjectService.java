@@ -49,6 +49,10 @@ public class ProjectService {
 		return project;
 	}*/
 
+	public void save(Project project){
+		this.projects.add(project);
+	}
+
 	private Project createProject(String title, String description, Sponsor sponsor) {
 		Project project = new Project();
 		project.setName(title);
