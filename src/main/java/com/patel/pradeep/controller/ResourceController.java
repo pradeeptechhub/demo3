@@ -27,12 +27,15 @@ public class ResourceController {
 	@RequestMapping("/add")
 	public String add(Model model) {
 		System.out.println("Invoking add()");
+		return "resource_add";
+	}
 
+	@RequestMapping("/find")
+	public String find(Model model){
 		if(1==1){
 			throw new RuntimeException("There was an error.");
 		}
-
-		return "resource_add";
+		return "home";
 	}
 
 	@ExceptionHandler(NullPointerException.class)

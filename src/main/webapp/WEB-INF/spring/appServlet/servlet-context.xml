@@ -16,6 +16,12 @@
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 
+	<interceptors>
+		<interceptor>
+			<mapping path="/project/**"/>
+			<beans:bean class="com.patel.pradeep.interceptors.GlobalInterceptor" />
+		</interceptor>
+	</interceptors>
 
 	<beans:bean
 		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
