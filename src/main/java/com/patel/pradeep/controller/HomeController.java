@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,19 +36,18 @@ public class HomeController {
 		return "home";
 	}
 
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String goHome(Locale locale, Model model) {
-		logger.info("goHome");
-
-		Project project = new Project();
-		project.setName("First Project");
-		project.setSponsor(new Sponsor("NASA", "555-555-5555", "nasa@nasa.com"));
-		project.setDescription("This is a simple project sponsored by NASA");
-
-		model.addAttribute("currentProject", project);
+	@RequestMapping(value = "/")
+	public String goHomeAgain(Model model, @ModelAttribute("project") Project project) {
+		System.out.println("Invoking goHomeAgain()");
+		if(project.getProjectId() != null){ //Redirected flashAttribute data
+			model.addAttribute("currentProject", project);
+		}else{
+			project = new Project();
+			project.setName("First Project");
+			project.setSponsor(new Sponsor("NASA", "555-555-5555", "nasa@nasa.com"));
+			project.setDescription("This is a simple project sponsored by NASA");
+			model.addAttribute("currentProject", project);
+		}
 		return "home";
 	}
 

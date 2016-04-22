@@ -77,8 +77,9 @@ public class ProjectController {
 		System.out.println(project);
 
 		project.setProjectId(555L);
-		this.projectService.save(project);
-		attributes.addAttribute("projectId", project.getProjectId().toString());
+		//this.projectService.save(project);
+		//attributes.addAttribute("project", project.getProjectId().toString());
+		attributes.addFlashAttribute("project", project);
 
 		return "redirect:/"; // HTTP Status code 302 indicates redirect
 	}
