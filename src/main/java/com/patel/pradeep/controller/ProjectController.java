@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.patel.pradeep.model.Project;
 import com.patel.pradeep.service.ProjectService;
@@ -25,6 +26,12 @@ public class ProjectController {
 
 	@Autowired
 	private ProjectService projectService;
+
+	@RequestMapping(value="find/{projectId}")
+	@ResponseBody
+	public Project findProjectObject(Model model, @PathVariable Long projectId){
+		return this.projectService.find(projectId);
+	}
 
 	@RequestMapping(value="/{projectId}")
 	public String findProject(Model model, @PathVariable Long projectId){
@@ -38,6 +45,7 @@ public class ProjectController {
 		return "projects";
 	}
 
+	@SuppressWarnings("serial")
 	@RequestMapping(value="/add",method=RequestMethod.GET)
 	public String addProject(Model model){
 		System.out.println("invoking addProject");
