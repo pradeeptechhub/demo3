@@ -35,7 +35,7 @@ public class ResourceController {
 		return "resource_add";
 	}
 
-	@ExceptionHandler(Exception.class)
+	@ExceptionHandler(NullPointerException.class)
 	public String handleError(HttpServletRequest request){
 		return "controller_error";
 	}
