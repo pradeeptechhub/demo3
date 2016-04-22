@@ -19,7 +19,7 @@
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 
-	<beans:bean class="com.patel.pradeep.model.HitCounter" scope="session">
+	<beans:bean class="com.patel.pradeep.model.HitCounter" scope="application">
 		<!-- aop:scoped-proxy helps injecting a bean of one scope (request) to another (singleton) -->
 		<aop:scoped-proxy/>
 	</beans:bean>

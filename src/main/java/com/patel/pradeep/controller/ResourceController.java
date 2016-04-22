@@ -6,16 +6,19 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.patel.pradeep.model.Resource;
+import com.patel.pradeep.service.ResourceService;
 
 /*Note: @SessionAttributes is applicable to single controller only*/
 
@@ -24,31 +27,46 @@ import com.patel.pradeep.model.Resource;
 @SessionAttributes("resource")
 public class ResourceController {
 
+	@Autowired
+	private ResourceService service;
+
 	@RequestMapping("/add")
 	public String add(Model model) {
 		System.out.println("Invoking add()");
 		return "resource_add";
 	}
 
+	@RequestMapping("/{resourceId}")
+	@ResponseBody
+	public Resource findResource(@PathVariable("resourceId") Long resourceId){
+		return service.find(resourceId);
+	}
+
 	@RequestMapping("/find")
-	public String find(Model model){
-		if(1==1){
+	public String find(Model model) {
+		model.addAttribute("resources", service.findAll());
+		return "resources";
+	}
+
+	@RequestMapping("/exception")
+	public String globalException(Model model) {
+		if (1 == 1) {
 			throw new RuntimeException("There was an error.");
 		}
 		return "home";
 	}
 
 	@ExceptionHandler(NullPointerException.class)
-	public String handleError(HttpServletRequest request){
+	public String handleError(HttpServletRequest request) {
 		return "controller_error";
 	}
 
 	@RequestMapping("/request")
-	@ResponseBody //request(@RequestBody String resource)
-	public String request(@ModelAttribute("resource") Resource resource){
+	@ResponseBody // request(@RequestBody String resource)
+	public String request(@ModelAttribute("resource") Resource resource) {
 		System.out.println("Invoking request()");
 		System.out.println(resource);
-		//Send out an email for approval
+		// Send out an email for approval
 		return "The request has been sent for approval";
 	}
 
@@ -62,7 +80,9 @@ public class ResourceController {
 	public String save(@ModelAttribute Resource resource, SessionStatus status) {
 		System.out.println("Invoking the save()");
 		System.out.println(resource);
-		status.setComplete(); //To remove attributes from session (@SessionAttributes("resource") here)
+		// To remove attributes from session (@SessionAttributes("resource")
+		// here)
+		status.setComplete();
 		// return "resource_add"; //OR
 		return "redirect:/resource/add";
 	}

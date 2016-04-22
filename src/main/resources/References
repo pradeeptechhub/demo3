@@ -1,5 +1,7 @@
 @\Spring\Spring MVC\O'Reilly - Spring MVC for Java Developers
 
+Start -> 07_04-Bean Validation.mp4
+
 Notes:
 @ModelAttributes get placed within the model when used on a stand alone method.
 @ModelAttributes is used to map form data to model attributes when used as a method parameter.
@@ -12,3 +14,28 @@ A RedirectAttributes model is empty when the method is called and is never used 
 After the redirect, flash attributes are automatically added to the model of the controller that serves the target URL.
 
 2. flashAttribute vs modelAttribute
+
+3. @ExceptionHandler:
+This approach only applies to @RequestMapping annotated controller methods.
+Scope is limited to the current controller only.
+
+4. Seems no effect of extra forward slashes on RequestMapping urls
+on the url functionality (see the ProjectController.java).
+
+5. flashAttribute gets cleared once the redirected page is displayed.
+
+6. handlerInterceptors are intercept for short allows to add functionalities to the request
+processing life cycles at three points as below :
+	-before a controller handles a request that has been mapped to a handler method
+	-after the handler method finished performing it's logic within that method
+	-when the view is about to be rendered and sent back as a response to the client
+7. Bean Scopes:
+	Spring core:
+		-prototype
+		-singleton
+	Spring MVC (Spring core + 3 additional) scopes
+		-request
+		-session
+		-application
+8. Spring support of JSON:
+	Just add jackson in pom or classpath, Spring MVC is smart enough to detect and convert data in json format.

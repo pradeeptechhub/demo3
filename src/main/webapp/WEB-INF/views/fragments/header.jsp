@@ -29,6 +29,7 @@
 				<ul class="dropdown-menu" role="menu">
 					<li><a href="<spring:url value="/resource/add"/>">Add</a></li>
 					<li><a href="<spring:url value="/resource/find"/>">Find</a></li>
+					<li><a href="<spring:url value="/resource/exception"/>">Exception</a></li>
 				</ul>
 			</li>
 
