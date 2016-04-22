@@ -57,11 +57,12 @@ public class ProjectController {
 			System.out.println("The project validated.");
 		}else{
 			System.out.println("the project did not validate");
+			return "project_add"; //To current page if fail validations
 		}
 
 		System.out.println("invoking saveProject");
 		System.out.println(project);
-		return "project_add";
+		return "project_add"; //To next page. Not implemented
 	}
 
 	@InitBinder
