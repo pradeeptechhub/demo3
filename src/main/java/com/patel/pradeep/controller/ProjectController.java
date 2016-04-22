@@ -27,9 +27,10 @@ public class ProjectController {
 	@Autowired
 	private ProjectService projectService;
 
-	@RequestMapping(value="find/{projectId}")
+	@RequestMapping(value="///find/{projectId}") //Seems no effect of extra forward slashes
 	@ResponseBody
 	public Project findProjectObject(Model model, @PathVariable Long projectId){
+		System.out.println("Invoking findProjectObject()");
 		return this.projectService.find(projectId);
 	}
 
@@ -70,7 +71,7 @@ public class ProjectController {
 
 		System.out.println("invoking saveProject");
 		System.out.println(project);
-		return "project_add"; //To next page. Not implemented
+		return "redirect:/project/find"; //HTTP Status code 302 indicates redirect
 	}
 
 	@InitBinder
