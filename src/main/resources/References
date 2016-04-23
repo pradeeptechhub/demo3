@@ -39,3 +39,19 @@ processing life cycles at three points as below :
 		-application
 8. Spring support of JSON:
 	Just add jackson in pom or classpath, Spring MVC is smart enough to detect and convert data in json format.
+
+9. ControllerAdvice Since 3.2
+	It is typically used to define {@link ExceptionHandler @ExceptionHandler},
+	{@link InitBinder @InitBinder}, and {@link ModelAttribute @ModelAttribute}
+	methods that apply to all {@link RequestMapping @RequestMapping} methods.
+
+	<p>One of {@link #annotations()}, {@link #basePackageClasses()},
+ 	{@link #basePackages()} or its alias {@link #value()}
+ 	may be specified to define specific subsets of Controllers
+ 	to assist. When multiple selectors are applied, OR logic is applied -
+ 	meaning selected Controllers should match at least one selector.
+
+ 	<p>The default behavior (i.e. if used without any selector),
+ 	the {@code @ControllerAdvice} annotated class will assist all known Controllers.
+
+10.Custom Data types need to be converted manually and it need to be register spring IOC container.

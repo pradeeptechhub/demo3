@@ -10,9 +10,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.patel.pradeep.model.Resource;
 import com.patel.pradeep.service.ResourceService;
@@ -26,6 +29,15 @@ public class ResourceController {
 
 	@Autowired
 	private ResourceService service;
+
+	@RequestMapping(value="/upload", method=RequestMethod.POST)
+	public @ResponseBody String handleUpload(@RequestParam("file") MultipartFile file){
+		if(!file.isEmpty()){
+			return "The file size is " + file.getSize();
+		}else{
+			return "There was a problem.";
+		}
+	}
 
 	@RequestMapping("/add")
 	public String add(Model model) {
