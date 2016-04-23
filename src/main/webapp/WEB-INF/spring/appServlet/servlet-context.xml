@@ -13,7 +13,14 @@
 		infrastructure -->
 
 	<!-- Enables the Spring MVC @Controller programming model -->
-	<annotation-driven />
+	<annotation-driven conversion-service="conversion-service"/>
+	<beans:bean id="conversion-service" class="org.springframework.context.support.ConversionServiceFactoryBean">
+		<beans:property name="converters">
+			<beans:list>
+				<beans:bean class="com.patel.pradeep.converters.JulianDateConverter" />
+			</beans:list>
+		</beans:property>
+	</beans:bean>
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving
 		up static resources in the ${webappRoot}/resources directory -->
