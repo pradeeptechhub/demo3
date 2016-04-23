@@ -4,12 +4,9 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,18 +45,16 @@ public class ResourceController {
 		return "resources";
 	}
 
-	@RequestMapping("/exception")
+	@RequestMapping("/runtime") //handled by HandlerExceptionResolver implementing class
 	public String globalException(Model model) {
-		if (1 == 1) {
-			throw new RuntimeException("There was an error.");
-		}
-		return "home";
+		throw new RuntimeException("Test Run Time Exception.");
 	}
 
-	@ExceptionHandler(NullPointerException.class)
+	//Moved to GlobalControllerAdvice class
+	/*@ExceptionHandler(NullPointerException.class)
 	public String handleError(HttpServletRequest request) {
 		return "controller_error";
-	}
+	}*/
 
 	@RequestMapping("/request")
 	@ResponseBody // request(@RequestBody String resource)

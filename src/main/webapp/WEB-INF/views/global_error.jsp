@@ -14,12 +14,12 @@
 
 </head>
 <body>
-	
-	<jsp:include page="../views/fragments/header.jsp"></jsp:include>			
+
+	<jsp:include page="../views/fragments/header.jsp"></jsp:include>
 
 	<div class="container">
-		
-		<h2>An error was encountered and handled by a global ExceptionHandlerResovler.</h2>
+
+		<h2>An error was encountered and handled by a global HandlerExceptionResolver implementing class.</h2>
 
 	</div>
 </body>

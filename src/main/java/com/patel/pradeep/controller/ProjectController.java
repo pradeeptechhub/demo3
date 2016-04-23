@@ -84,6 +84,12 @@ public class ProjectController {
 		return "redirect:/"; // HTTP Status code 302 indicates redirect
 	}
 
+	@RequestMapping(value="/nullPointer")
+	public String nullPinterException(Model model){
+		throw new NullPointerException("Test Null Pointer Exception");
+	}
+
+	//Cannot be moved to GlobalControllerAdvice class, unless this is applicable globally across Controllers
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.addValidators(new ProjectValidator());
