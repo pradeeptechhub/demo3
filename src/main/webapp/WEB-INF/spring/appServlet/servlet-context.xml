@@ -18,6 +18,7 @@
 		<beans:property name="converters">
 			<beans:list>
 				<beans:bean class="com.patel.pradeep.converters.JulianDateConverter" />
+				<beans:bean class="com.patel.pradeep.converters.ResourceConverter" />
 			</beans:list>
 		</beans:property>
 	</beans:bean>
